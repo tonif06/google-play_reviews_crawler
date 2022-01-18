@@ -24,7 +24,7 @@ all_data = pd.DataFrame()
 for _app in lista_android["app_name"]:
  result1 = reviews_all(
  _app,
- sleep_milliseconds=20, # defaults to 0
+ sleep_milliseconds=5, # defaults to 0
  lang='ro', # defaults to 'ro'
  country='ro', # defaults to 'ro'
  sort=Sort.NEWEST, # defaults to Sort.MOST_RELEVANT , you can use Sort.NEWEST to get newst reviews
@@ -39,7 +39,7 @@ for _app in lista_android["app_name"]:
  all_data = all_data.append(scrapeddata)
 
 all_data=all_data.drop(columns=['userImage'])
-all_data.to_excel("C:/Users/antfiera/Documents/GitHub/google-play_reviews_crawler/playstorescrapping.xlsx", index = False) 
+all_data.to_excel("C:/Users/antfiera/Documents/GitHub/google-play_reviews_crawler/android_app_reviews.xlsx", index = False) 
 
 
 
@@ -55,17 +55,19 @@ for ap in lista_android["app_name"]:
  )
  del info['comments']
  app_infos.append(info)
+ print(app_infos)
 
 
 info_aps=pd.DataFrame.from_dict(app_infos)
 
-info_aps['updated']=(((info_aps['updated'].astype(int))/60)/60)/24+25569.00
-
+#info_aps['updated']=(((info_aps['updated'].astype(int))/60)/60)/24+25569.00
+'''
 info_aps=info_aps.drop(columns=['descriptionHTML','summary', 'summaryHTML', 'saleTime', 'originalPrice','saleText', 'offersIAP','androidVersionText','developer','developerId','developerEmail','developerWebsite', 'privacyPolicy','developerInternalID','icon','headerImage','screenshots','video','videoImage', 'contentRatingDescription', 'adSupported', 'containsAds', 'version', 'recentChanges','recentChangesHTML','editorsChoice',
 'inAppProductPrice', 'moreByDeveloper','description'])
+'''
 info_aps['cules la']= datetime.datetime.now()
 
 
 
-info_aps.to_excel("C:/Users/antfiera/Documents/GitHub/google-play_reviews_crawler/appinfo.xlsx", index = False) 
+info_aps.to_excel("C:/Users/antfiera/Documents/GitHub/google-play_reviews_crawler/android_app_stats.xlsx", index = False) 
 print(info_aps)
