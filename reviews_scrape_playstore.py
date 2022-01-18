@@ -17,7 +17,7 @@ import datetime
 
 ### EXTRAGE REVIEWS
 
-lista_android = pd.read_csv("C:/Users/antfiera/Desktop/google-play/in.csv")
+lista_android = pd.read_csv("C:/Users/antfiera/Documents/GitHub/google-play_reviews_crawler/in.csv")
 all_data = pd.DataFrame()
 
 
@@ -39,7 +39,7 @@ for _app in lista_android["app_name"]:
  all_data = all_data.append(scrapeddata)
 
 all_data=all_data.drop(columns=['userImage'])
-all_data.to_excel("C:/Users/antfiera/Desktop/google-play/playstorescrapping.xlsx", index = False) 
+all_data.to_excel("C:/Users/antfiera/Documents/GitHub/google-play_reviews_crawler/playstorescrapping.xlsx", index = False) 
 
 
 
@@ -67,5 +67,5 @@ info_aps['cules la']= datetime.datetime.now()
 
 
 
-info_aps.to_excel("C:/Users/antfiera/Desktop/google-play/appinfo.xlsx", index = False) 
+info_aps.to_excel("C:/Users/antfiera/Documents/GitHub/google-play_reviews_crawler/appinfo.xlsx", index = False) 
 print(info_aps)
